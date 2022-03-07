@@ -1,6 +1,5 @@
 import styled, { ThemeProvider } from "styled-components";
 import React, { Component } from "react";
-import { toHaveAccessibleDescription } from "@testing-library/jest-dom/dist/to-have-accessible-description";
 
 const configDarkTheme = {
     background: "#000",
