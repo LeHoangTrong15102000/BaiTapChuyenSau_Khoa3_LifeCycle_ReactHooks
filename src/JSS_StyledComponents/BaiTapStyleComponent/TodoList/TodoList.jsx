@@ -29,6 +29,8 @@ import {
   changeThemeAction,
   deleteTaskAction,
   doneTaskAction,
+  editTaskAction,
+  restoreTaskAction,
 } from '../../../redux/actions/TodoListAction';
 import { arrTheme } from '../../Themes/ThemeManager';
 
@@ -49,7 +51,9 @@ class TodoList extends Component {
           <Tr key={index}>
             <Th style={{ verticalAlign: 'middle' }}>{task.taskName}</Th>
             <Th className="text-right">
-              <Button className="mr-2">
+              <Button onClick={() => {
+                this.props.dispatch(editTaskAction(task))
+              }} className="mr-2">
                 <i className="fa fa-edit"></i> Edit
               </Button>
               <Button
@@ -62,7 +66,7 @@ class TodoList extends Component {
               </Button>
               <Button
                 onClick={() => {
-                  this.props.dispatch(deleteTaskAction());
+                  this.props.dispatch(deleteTaskAction(task.id));
                 }}
                 className=""
               >
@@ -84,7 +88,14 @@ class TodoList extends Component {
           <Tr key={index}>
             <Th style={{ verticalAlign: 'middle' }}>{task.taskName}</Th>
             <Th className="text-right">
-              <Button className="">
+              <Button onClick={() => {
+                this.props.dispatch(restoreTaskAction(task.id))
+              }} className="mr-2">
+                <i className="fa fa-redo"></i> Restore
+              </Button>
+              <Button onClick={() => {
+                this.props.dispatch(deleteTaskAction(task.id))
+              }} className="">
                 <i className="fa fa-trash"></i>
               </Button>
             </Th>
@@ -154,6 +165,7 @@ class TodoList extends Component {
 
           {/* Sử dụng thẻ Text Field */}
           <TextField
+            value={this.props.taskEdit.taskName}
             onChange={(event) => {
               this.setState({
                 taskName: event.target.value,
@@ -216,6 +228,7 @@ const mapStateToProps = (state) => ({
   themeTodoList: state.TodoListReducer.themeTodoList,
   // binding taskList
   taskList: state.TodoListReducer.taskList,
+  taskEdit: state.TodoListReducer.taskEdit,// Sau khi lấy được về thì binding cái task đó lên phần input thông qua giá trị value, giá trị này luôn luôn được theo dõi từ Redux
 });
 
 // Tạo một hàm gửi sự kiện xử lý lên store

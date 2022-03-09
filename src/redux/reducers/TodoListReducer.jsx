@@ -4,8 +4,11 @@ import {
   change_theme,
   delete_task,
   done_task,
+  edit_task,
+  restore_task,
 } from '../types/TodoListTypes';
 import { arrTheme } from '../../JSS_StyledComponents/Themes/ThemeManager';
+import { bindActionCreators } from 'redux';
 
 // Thì ở đây sẽ là nơi mà chúng ta tổ chức Reducer
 const TodoListReducer = {
@@ -17,6 +20,8 @@ const TodoListReducer = {
     { id: 'task-3', taskName: 'task 3', done: false },
     { id: 'task-4', taskName: 'task 4', done: false },
   ], // mặc định là nó chưa có gì hết
+
+  taskEdit:  { id: 'task-1', taskName: 'task 1', done: false },// thì taskEdit nó cũng chứa những thuộc tính giống như taskList
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -73,24 +78,66 @@ export default (state = TodoListReducer, action) => {
     case done_task: {
       // console.log('done_task', action);
       // Tạo ra taskListUpdate chứa danh sách các task chưa done còn các task đã done thì chuyển nó xuống bên dưới
+      // Click vào button Done Check => thì nó sẽ dispatch lên 1 cái action có taskId
       let taskListUpdate = [...state.taskList];
       // Tìm ra task cần để done
       let index = taskListUpdate.findIndex((task) => task.id === action.taskId);
       if (index !== -1) {
-        taskListUpdate.splice(index, 1);
+        // Gán thuộc tính done của Task thành true để nó di chuyển xuống task Completed
+        taskListUpdate[index].done = true;
       }
-
-      state.taskList = taskListUpdate;
-      return { ...state };
+      // Cuối cùng là gán lại taskListUpdate sau khi cập nhật thành công
+      // state.taskList = taskListUpdate;
+      return { ...state ,taskList: taskListUpdate };
     }
-
+    
+    // Có thể làm thêm chức năng Refresh lại done -> chuyển thành false thì nó sẽ lên lại
     // Xử lý delete task
     case delete_task: {
-      return { ...state };
+      // console.log(action.taskId)
+      // Đầu tiên cũng tạo ra một taskListUpdate
+      // let taskListUpdate = [...state.taskList]
+      // Tìm ra task cần để delete trong Todo
+      // let index = taskListUpdate.findIndex(task => task.id === action.taskId);
+      // if (index !== -1) {
+      //   taskListUpdate.splice(index, 1);
+      // }
+      // Có thể dùng hàm filter để xóa phần tử trong mảng
+      // taskListUpdate = taskListUpdate.filter(task => task.id !== action.taskId);// lấy ra cái mảng mới không còn thằng có id được click vào nữa
+
+      // cập nhật lại state sau khi xóa khỏi mảng
+      // return { ...state, taskList:  taskListUpdate };
+
+      // Chúng ta có thể viết chuyên nghiệp hơn với 1 dòng duy nhất
+      return {...state, taskList: state.taskList.filter(task => task.id !== action.taskId)}
+    }
+
+    // Xử lý Restore task
+    case restore_task : {
+
+      // Cũng Clone cái mảng ra để có thể thêm lại vào 
+      let taskListUpdate = [...state.taskList];
+      let index = taskListUpdate.findIndex(task => task.id === action.taskId) 
+
+      if (index !== -1) {
+        taskListUpdate[index].done = false;// Nếu mà tìm ra thì biến nó lại  thành false
+      }
+      // console.log("Restore", action.taskId)
+      return {...state, taskList: taskListUpdate}; // cuối cùng là cập nhật lại state của Redux
+
+      // Viết code với 1 dòng để nhìn cho nó chuyên nghiệp
+    }
+
+    // Xử lý Edit task
+    case edit_task: {
+      // console.log(action.taskId)
+      // task truyền vào là một object luôn để khi mà có sự thay đổi thì thằng value nó sẽ lấy về taskName từ task
+      return {...state, taskEdit: action.task}
     }
 
     // eslint-disable-next-line no-fallthrough
     default:
       return { ...state };
   }
+    
 };
