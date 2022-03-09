@@ -26,4 +26,5 @@
 // Mỗi khi nhấn vào nút edit thì chúng ta sẽ dispatch lên một cái action của task để mà chỉnh sửa, thì cái nội dung của taskEdit trong Redux nó sẽ được mapStatToProps vào ô input 
 
 // Nhưng mà khi editTask như vậy thì nó sx có vấn đề phát sinh -> đó là khi ấn vào bàn phím thì nó không chạy chữ -> do nó có phần chạy ngầm ở dưới -> bài tiếp theo sẽ học về lifeCycle để rõ hơn về phần này
-
+// Do khi ma render lại thì giá trị value nó lại tiếp tục lấy từ props về chứ ko phải lấy giá trị của người dùng nhập vào làm thay đổi, nên ta cứ thấy là nhấn vào thay đổi taskName ko được, nhưng thực chất là nó vẫn thay đổi mà tại là chúng ta không nhìn thấy mà thôi
+// Tìm hiểu quy trình can hiệp vào những cái sự kiện trước khi render và sau khi render như nào
