@@ -1,21 +1,20 @@
 import logo from './logo.svg';
-import './App.css'; 
-import DemoTheme from './JSS_StyledComponents/Themes/DemoTheme'
+import './App.css';
+import DemoTheme from './JSS_StyledComponents/Themes/DemoTheme';
 import TodoList from './JSS_StyledComponents/BaiTapStyleComponent/TodoList/TodoList';
 import LifeCycleReact from './LifeCycle/LifeCycleReact';
 
 function App() {
   return (
-
-    // **************************
-    <div>
-      <LifeCycleReact />
-    </div>
+    // ************************** LifeCycle
+    // <div>
+    //   <LifeCycleReact />
+    // </div>
 
     // ************************ BaiTap TodoList
-    // <div>
-    //   <TodoList />
-    // </div>
+    <div>
+      <TodoList />
+    </div>
 
     // ********************** Demo Theme
     // <div>

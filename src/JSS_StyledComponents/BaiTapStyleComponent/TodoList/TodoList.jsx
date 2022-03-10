@@ -51,9 +51,12 @@ class TodoList extends Component {
           <Tr key={index}>
             <Th style={{ verticalAlign: 'middle' }}>{task.taskName}</Th>
             <Th className="text-right">
-              <Button onClick={() => {
-                this.props.dispatch(editTaskAction(task))
-              }} className="mr-2">
+              <Button
+                onClick={() => {
+                  this.props.dispatch(editTaskAction(task));
+                }}
+                className="mr-2"
+              >
                 <i className="fa fa-edit"></i> Edit
               </Button>
               <Button
@@ -88,14 +91,20 @@ class TodoList extends Component {
           <Tr key={index}>
             <Th style={{ verticalAlign: 'middle' }}>{task.taskName}</Th>
             <Th className="text-right">
-              <Button onClick={() => {
-                this.props.dispatch(restoreTaskAction(task.id))
-              }} className="mr-2">
+              <Button
+                onClick={() => {
+                  this.props.dispatch(restoreTaskAction(task.id));
+                }}
+                className="mr-2"
+              >
                 <i className="fa fa-redo"></i> Restore
               </Button>
-              <Button onClick={() => {
-                this.props.dispatch(deleteTaskAction(task.id))
-              }} className="">
+              <Button
+                onClick={() => {
+                  this.props.dispatch(deleteTaskAction(task.id));
+                }}
+                className=""
+              >
                 <i className="fa fa-trash"></i>
               </Button>
             </Th>
@@ -132,9 +141,13 @@ class TodoList extends Component {
     });
   };
 
-  // Viết cái hàm edit task
-
-  // Viết hàm Done task
+  //lifeCycle bảng 16 nhận vào props mới được thực thi trước render
+  // Nên chúng ta thống nhất lấy dữ liệu từ state của component thôi không lấy dữ liệu từ props của Redux nữa.
+  componentWillReceiveProps(newProps) {
+    this.setState({
+      taskName: newProps.taskEdit.taskName, // lấy giá trị mới của taskName mỗi lần người dùng click vào edit
+    });
+  }
   render() {
     return (
       <ThemeProvider theme={this.props.themeTodoList}>
@@ -165,11 +178,17 @@ class TodoList extends Component {
 
           {/* Sử dụng thẻ Text Field */}
           <TextField
-            value={this.props.taskEdit.taskName}
+            value={this.state.taskName}
             onChange={(event) => {
-              this.setState({
-                taskName: event.target.value,
-              });
+              this.setState(
+                {
+                  taskName: event.target.value,
+                }
+                // () => {
+                //   // thật ra thì khi gõ vào thì nó vẫn binding lại value của ô input
+                //   console.log(this.state);
+                // }
+              );
             }}
             name="taskName"
             label="Task name"
@@ -228,10 +247,10 @@ const mapStateToProps = (state) => ({
   themeTodoList: state.TodoListReducer.themeTodoList,
   // binding taskList
   taskList: state.TodoListReducer.taskList,
-  taskEdit: state.TodoListReducer.taskEdit,// Sau khi lấy được về thì binding cái task đó lên phần input thông qua giá trị value, giá trị này luôn luôn được theo dõi từ Redux
+  taskEdit: state.TodoListReducer.taskEdit, // Sau khi lấy được về thì binding cái task đó lên phần input thông qua giá trị value, giá trị này luôn luôn được theo dõi từ Redux
 });
 
-// Tạo một hàm gửi sự kiện xử lý lên store
+// Tạo một hàm gửi sự kiện xử lý lên Redux
 // const mapDispatchToProps = () => {
 //   // Mỗi lần thay đổi theme thì chúng ta sẽ dispatch lên store cai action để lấy theme mới
 // };

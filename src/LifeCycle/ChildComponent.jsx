@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class ChildComponent extends Component {
   render() {
-    console.log("render ChildComponent")
+    console.log('render ChildComponent');
     return (
       <div>
         <nav className="navbar navbar-expand-sm navbar-dark bg-primary">
@@ -69,5 +69,10 @@ export default class ChildComponent extends Component {
         </nav>
       </div>
     );
+  }
+
+  // Nó sẽ được gọi trước khi thằng component mất khỏi cây DOM
+  componentWillUnmount() {
+    console.log('componentWillUnmount');
   }
 }
