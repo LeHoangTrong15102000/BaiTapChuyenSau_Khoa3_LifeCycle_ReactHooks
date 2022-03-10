@@ -31,7 +31,7 @@ import {
   doneTaskAction,
   editTaskAction,
   restoreTaskAction,
-  uploadTaskAction,
+  updateTaskAction,
 } from '../../../redux/actions/TodoListAction';
 import { arrTheme } from '../../Themes/ThemeManager';
 
@@ -39,7 +39,8 @@ class TodoList extends Component {
   // Object State để chứa thông tin người dùng nhập vào
   state = {
     taskName: '',
-
+    disabled: true,
+    disabledAddTask: true,
     // Mỗi lần người dùng nhập vào thì mình sẽ setState lại giá trị
   };
 
@@ -54,7 +55,16 @@ class TodoList extends Component {
             <Th className="text-right">
               <Button
                 onClick={() => {
-                  this.props.dispatch(editTaskAction(task));
+                  //gán cho disabled lại là false
+                  // Nếu mà viết giống bên dưới thì nó rất dễ bị ảnh thưởng do hàm setState là hàm bất đồng bộ, khi mà setState xong thì mới đẩy nguồn dữ liệu lên Redux
+                  this.setState(
+                    {
+                      disabled: false,
+                    },
+                    () => {
+                      this.props.dispatch(editTaskAction(task));
+                    }
+                  );
                 }}
                 className="mr-2"
               >
@@ -150,7 +160,6 @@ class TodoList extends Component {
   //   });
   // }
 
-
   // Xử lý UploadTask dispatch lên Redux
   render() {
     return (
@@ -216,12 +225,42 @@ class TodoList extends Component {
           >
             <i className="fa fa-plus"></i> Add task
           </Button>
-          <Button onClick={() => {
-            // Mỗi lần uploadTask thì nó sẽ đưa cái taskName của mình lên Reducer mà cập nhật lại Redux
-            this.props.dispatch(uploadTaskAction(this.state.taskName))
-          }} className="ml-2">
-            <i className="fa fa-upload"></i> Update task
-          </Button>
+          {this.state.disabled ? (
+            <Button
+              disabled
+              onClick={() => {
+                // Mỗi lần uploadTask thì nó sẽ đưa cái taskName của mình lên Reducer mà cập nhật lại Redux
+
+                this.props.dispatch(updateTaskAction(this.state.taskName));
+              }}
+              className="ml-2"
+            >
+              <i className="fa fa-upload"></i> Update task
+            </Button>
+          ) : (
+            <Button
+              onClick={() => {
+                // Mỗi lần uploadTask thì nó sẽ đưa cái taskName của mình lên Reducer mà cập nhật lại Redux
+                // Trước khi mình setState thì mình sẽ lưu trữ lại giá trị là taskName
+                let { taskName } = this.state;
+                this.setState(
+                  {
+                    disabled: true,
+                    // Và cũng clear đi cái nội dung trong input để người dùng có thể nhập tiếp
+                    taskName: '', // Vì vậy phải set taskName này sau khi nó đã cập nhật thành công lại nội dung trên Redux
+                  },
+                  () => {
+                    // Mình muốn là khi nút updateTask tắt đi xong thì mình mới dispatch state của taskName lên Redux
+                    this.props.dispatch(updateTaskAction(taskName));
+                  }
+                );
+              }}
+              className="ml-2"
+            >
+              <i className="fa fa-upload"></i> Update task
+            </Button>
+          )}
+
           <hr />
           <Heading2>Task to do</Heading2>
 
@@ -250,7 +289,6 @@ class TodoList extends Component {
 
   // Đây là lifeCycle trả về state cũ và props cũ của component trước khi render (nhưng lifecycle này chạy sau render)
   componentDidUpdate(prevProps, prevState) {
-
     // mỗi lần render thì gán cái prevProps cho cái state hiện tại
 
     // So sánh nếu như props trước đó(taskEdit trước mà khác taskEdit hiện tại thì mình mới setState)
@@ -259,7 +297,7 @@ class TodoList extends Component {
       // Thực hiện setState lại cho giá trị
       this.setState({
         taskName: this.props.taskEdit.taskName,
-      })
+      });
     }
   }
 }

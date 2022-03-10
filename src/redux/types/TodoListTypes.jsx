@@ -9,6 +9,6 @@ export const delete_task = 'delete_task';
 
 export const restore_task = 'restore_task';
 
-export const edit_task = 'edit_task'
+export const edit_task = 'edit_task';
 
-export const upload_task = 'upload_task'
+export const update_task = 'update_task';

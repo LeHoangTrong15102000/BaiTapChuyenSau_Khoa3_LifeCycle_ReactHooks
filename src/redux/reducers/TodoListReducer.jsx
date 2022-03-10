@@ -6,7 +6,7 @@ import {
   done_task,
   edit_task,
   restore_task,
-  upload_task,
+  update_task,
 } from '../types/TodoListTypes';
 import { arrTheme } from '../../JSS_StyledComponents/Themes/ThemeManager';
 import { bindActionCreators } from 'redux';
@@ -22,7 +22,7 @@ const TodoListReducer = {
     { id: 'task-4', taskName: 'task 4', done: false },
   ], // mặc định là nó chưa có gì hết
 
-  taskEdit:  { id: 'task-1', taskName: 'task 1', done: false },// thì taskEdit nó cũng chứa những thuộc tính giống như taskList
+  taskEdit: { id: '-1', taskName: '', done: false }, // thì taskEdit nó cũng chứa những thuộc tính giống như taskList
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -89,9 +89,9 @@ export default (state = TodoListReducer, action) => {
       }
       // Cuối cùng là gán lại taskListUpdate sau khi cập nhật thành công
       // state.taskList = taskListUpdate;
-      return { ...state ,taskList: taskListUpdate };
+      return { ...state, taskList: taskListUpdate };
     }
-    
+
     // Có thể làm thêm chức năng Refresh lại done -> chuyển thành false thì nó sẽ lên lại
     // Xử lý delete task
     case delete_task: {
@@ -110,21 +110,23 @@ export default (state = TodoListReducer, action) => {
       // return { ...state, taskList:  taskListUpdate };
 
       // Chúng ta có thể viết chuyên nghiệp hơn với 1 dòng duy nhất
-      return {...state, taskList: state.taskList.filter(task => task.id !== action.taskId)}
+      return {
+        ...state,
+        taskList: state.taskList.filter((task) => task.id !== action.taskId),
+      };
     }
 
     // Xử lý Restore task
-    case restore_task : {
-
-      // Cũng Clone cái mảng ra để có thể thêm lại vào 
+    case restore_task: {
+      // Cũng Clone cái mảng ra để có thể thêm lại vào
       let taskListUpdate = [...state.taskList];
-      let index = taskListUpdate.findIndex(task => task.id === action.taskId) 
+      let index = taskListUpdate.findIndex((task) => task.id === action.taskId);
 
       if (index !== -1) {
-        taskListUpdate[index].done = false;// Nếu mà tìm ra thì biến nó lại  thành false
+        taskListUpdate[index].done = false; // Nếu mà tìm ra thì biến nó lại  thành false
       }
       // console.log("Restore", action.taskId)
-      return {...state, taskList: taskListUpdate}; // cuối cùng là cập nhật lại state của Redux
+      return { ...state, taskList: taskListUpdate }; // cuối cùng là cập nhật lại state của Redux
 
       // Viết code với 1 dòng để nhìn cho nó chuyên nghiệp
     }
@@ -133,31 +135,35 @@ export default (state = TodoListReducer, action) => {
     case edit_task: {
       // console.log(action.taskId)
       // task truyền vào là một object luôn để khi mà có sự thay đổi thì thằng value nó sẽ lấy về taskName từ task
-      return {...state, taskEdit: action.task}
+      return { ...state, taskEdit: action.task };
     }
 
     // Xử lý upload task
-    case upload_task : {
+    case update_task: {
       // Bắt được sự kiện rồi thì gán taskName cho task Edit, cập nhật lai taskName trong taskEdit
-      state.taskEdit = {...state.taskEdit, taskName: action.taskName}
+      state.taskEdit = { ...state.taskEdit, taskName: action.taskName };
 
       // Rồi tìm trong thằng taskList thằng nào có id trùng với thằng đang sửa thì cập nhập lại taskName đồng thời giữ nguyên id
-      let taskListUpdate = [...state.taskList]
+      let taskListUpdate = [...state.taskList];
       // Tìm trong taskLsit cập nhật lại taskList dựa vào taskEdit người dùng update
-      let index = taskListUpdate.findIndex(task => task.id === state.taskEdit.id)
-      
+      let index = taskListUpdate.findIndex(
+        (task) => task.id === state.taskEdit.id
+      );
+
       if (index !== -1) {
-        // thì mới gán lại taskEdit cho taskList 
-        taskListUpdate[index] = state.taskEdit
+        // thì mới gán lại taskEdit cho taskList
+        taskListUpdate[index] = state.taskEdit;
       }
+      state.taskList = taskListUpdate;
+      // Chỉnh sửa xong rồi thì chúng ta can thiệp
+      state.taskEdit = { id: '-1', taskName: '', done: false };
 
       // Cuối cùng là cập nhật lại state
-      return {...state, taskList: taskListUpdate}
+      return { ...state };
     }
 
     // eslint-disable-next-line no-fallthrough
     default:
       return { ...state };
   }
-    
 };
