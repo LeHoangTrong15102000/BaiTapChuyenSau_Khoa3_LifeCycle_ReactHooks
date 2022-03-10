@@ -11,3 +11,4 @@ export const restore_task = 'restore_task';
 
 export const edit_task = 'edit_task'
 
+export const upload_task = 'upload_task'

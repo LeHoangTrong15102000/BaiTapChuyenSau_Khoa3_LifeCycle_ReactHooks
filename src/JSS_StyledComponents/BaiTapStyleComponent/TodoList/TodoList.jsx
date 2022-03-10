@@ -31,6 +31,7 @@ import {
   doneTaskAction,
   editTaskAction,
   restoreTaskAction,
+  uploadTaskAction,
 } from '../../../redux/actions/TodoListAction';
 import { arrTheme } from '../../Themes/ThemeManager';
 
@@ -143,11 +144,14 @@ class TodoList extends Component {
 
   //lifeCycle bảng 16 nhận vào props mới được thực thi trước render
   // Nên chúng ta thống nhất lấy dữ liệu từ state của component thôi không lấy dữ liệu từ props của Redux nữa.
-  componentWillReceiveProps(newProps) {
-    this.setState({
-      taskName: newProps.taskEdit.taskName, // lấy giá trị mới của taskName mỗi lần người dùng click vào edit
-    });
-  }
+  // componentWillReceiveProps(newProps) {
+  //   this.setState({
+  //     taskName: newProps.taskEdit.taskName, // lấy giá trị mới của taskName mỗi lần người dùng click vào edit
+  //   });
+  // }
+
+
+  // Xử lý UploadTask dispatch lên Redux
   render() {
     return (
       <ThemeProvider theme={this.props.themeTodoList}>
@@ -212,7 +216,10 @@ class TodoList extends Component {
           >
             <i className="fa fa-plus"></i> Add task
           </Button>
-          <Button className="ml-2">
+          <Button onClick={() => {
+            // Mỗi lần uploadTask thì nó sẽ đưa cái taskName của mình lên Reducer mà cập nhật lại Redux
+            this.props.dispatch(uploadTaskAction(this.state.taskName))
+          }} className="ml-2">
             <i className="fa fa-upload"></i> Update task
           </Button>
           <hr />
@@ -239,6 +246,21 @@ class TodoList extends Component {
         </Container>
       </ThemeProvider>
     );
+  }
+
+  // Đây là lifeCycle trả về state cũ và props cũ của component trước khi render (nhưng lifecycle này chạy sau render)
+  componentDidUpdate(prevProps, prevState) {
+
+    // mỗi lần render thì gán cái prevProps cho cái state hiện tại
+
+    // So sánh nếu như props trước đó(taskEdit trước mà khác taskEdit hiện tại thì mình mới setState)
+    // Nếu bấm trùng id taskName thì nó không chạy vào đây và nó vẫn sẽ là taskName cũ
+    if (prevProps.taskEdit.id !== this.props.taskEdit.id) {
+      // Thực hiện setState lại cho giá trị
+      this.setState({
+        taskName: this.props.taskEdit.taskName,
+      })
+    }
   }
 }
 

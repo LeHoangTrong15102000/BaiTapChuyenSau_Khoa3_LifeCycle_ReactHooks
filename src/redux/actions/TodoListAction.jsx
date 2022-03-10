@@ -5,6 +5,7 @@ import {
   delete_task,
   restore_task,
   edit_task,
+  upload_task,
 } from '../types/TodoListTypes';
 
 // file này chứa rất nhiều action dispatch lên reducer
@@ -36,5 +37,10 @@ export const restoreTaskAction = (taskId) => ({
 export const editTaskAction = (task) => ({
   type: edit_task,
   task,// Nhận vào một object task
+})
+
+export const uploadTaskAction = (taskName) => ({
+  type: upload_task,
+  taskName,
 })
 // cái mà mình muốn gửi lên là một cái task để chúng ta push vào mảng taskList

@@ -23,6 +23,21 @@ export default class LifeCycleReact extends Component {
     return true;
   } //không nên sử dụng cái lifeCycle này thay vào đó sẽ sử dụng PureComponent
 
+  // LifeCycle tĩnh không truy xuất được trỏ this
+  // Do nó không thể binding dữ liệu từu người dùng nhập vào ra ô input lại nên ó không thể thay thế WillReceiceProps
+  // eslint-disable-next-line no-dupe-class-members
+  // static getDerivedStateFromProps(newProps, currentState) {
+  //   // newProps: là props mới, props cũ là this.props(không truy xuất được)
+  //   // currentState: ứng với state hiện tại
+
+  //   // Hoặc trả về một state mới
+  //   let newState = {...currentState, taskName: newProps.taskEdit.taskName}
+  //   return newState
+
+  //   // trả về null thì state giữ nguyên
+  //   // return null;
+  // }
+
   render() {
     console.log('Render Parent');
     return (
@@ -48,6 +63,8 @@ export default class LifeCycleReact extends Component {
   componentDidMount() {
     console.log('ComponentDidMount');
   }
+
+  // Do đó ta sẽ sử dụng lifeCycle là componentDidUpdate()
 
   // Lần đầu không gọi, chỉ gọi khi setState hoặc thay đổi giá trị của props
   componentDidUpdate(prevProps, prevState) {

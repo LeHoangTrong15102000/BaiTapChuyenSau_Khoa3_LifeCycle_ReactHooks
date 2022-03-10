@@ -6,6 +6,7 @@ import {
   done_task,
   edit_task,
   restore_task,
+  upload_task,
 } from '../types/TodoListTypes';
 import { arrTheme } from '../../JSS_StyledComponents/Themes/ThemeManager';
 import { bindActionCreators } from 'redux';
@@ -133,6 +134,25 @@ export default (state = TodoListReducer, action) => {
       // console.log(action.taskId)
       // task truyền vào là một object luôn để khi mà có sự thay đổi thì thằng value nó sẽ lấy về taskName từ task
       return {...state, taskEdit: action.task}
+    }
+
+    // Xử lý upload task
+    case upload_task : {
+      // Bắt được sự kiện rồi thì gán taskName cho task Edit, cập nhật lai taskName trong taskEdit
+      state.taskEdit = {...state.taskEdit, taskName: action.taskName}
+
+      // Rồi tìm trong thằng taskList thằng nào có id trùng với thằng đang sửa thì cập nhập lại taskName đồng thời giữ nguyên id
+      let taskListUpdate = [...state.taskList]
+      // Tìm trong taskLsit cập nhật lại taskList dựa vào taskEdit người dùng update
+      let index = taskListUpdate.findIndex(task => task.id === state.taskEdit.id)
+      
+      if (index !== -1) {
+        // thì mới gán lại taskEdit cho taskList 
+        taskListUpdate[index] = state.taskEdit
+      }
+
+      // Cuối cùng là cập nhật lại state
+      return {...state, taskList: taskListUpdate}
     }
 
     // eslint-disable-next-line no-fallthrough
