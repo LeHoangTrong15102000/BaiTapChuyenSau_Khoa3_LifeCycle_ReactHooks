@@ -9,3 +9,17 @@
 // *************************************
 // useEffect chạy sau khi DOM được cập nhật có thể hiểu là chạy sau khi render
 // Có thể gọi useEffect nhiều lần trong 1 component
+
+/**
+ * Note:
+ *  + Chỉ họi hook ở trên cùng.
+ *  + không gọi Hook bên trong loop, câu điều kiện, hay các function lồng với nhau
+ *  + Chỉ dùng Hook với react function component
+ * 
+ * - Thay vì đó, luôn sử dụng Hook ở trên cùng của function. Với cách này, bạn đảm bảo các Hook được gọi theo đúng thứ tự
+ *  trong các lần render. Nó cho phép React có được đúng state giữa nhiều lần gọi useState và useEffect.
+ *        lý do: https://vi.reactjs.org/docs/hooks-rules.html .
+ * 
+ * - Ngoài ra react cho phép chúng ta custom hook (Tạo ra các hook của riêng ta dựa trên các hook cơ bản của react -> Xây dựng trên nguyên tắt kế thừa không phải thay đổi)
+ *          https://vi.reactjs.org/docs/hooks-custom.html .
+ */
