@@ -47,3 +47,14 @@
 
 
 // ************************************** Ở video sau hướng dẫn sử dụng Redux với những cái hook của Redux
+// 2 Thư viện Redux sử dụng trong  việc sử dụng react functional là  useSelector và useDispatch, lúc trước là dùng connect giữa react và Redux còn bây giờ sẽ sử dụng 2 thư viện nầy để kết nói với Redux
+// 2 thư viện hook useSelector và useDispatch không phải của React core cung cấp, mà 2 thư viện này thuộc thư viện react-redux cung cấp cho phép ta truy cập đến Reducer một cách dễ dàng và ngắn gọn hơn.
+// Sẽ làm ví dụ để biết Redux nó sử dụng cho hooks là như thế nào
+
+/**
+ * Note: 
+ *  - Bước vào cái ứng dụng đầu tiên là phải làm giao diện trước, vừa code vừa làm giao diện rất là rối -> khiến cái flow đứt hoãn liên tục
+ * 
+ * 
+ * Làm giao diện sử dụng React hook functional
+ */

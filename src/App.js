@@ -11,19 +11,26 @@ import DemoUseRef from './ReactHooks/DemoUseRef';
 import DemoUseReducer from './ReactHooks/DemoUseReducer';
 import ContextProvider from './ReactHooks/Context/ContextProvider';
 import DemoUseContext from './ReactHooks/DemoUseContext';
+import DemoReduxApp from './ReactHooks/DemoReduxApp';
 
 function App() {
   return (
+
+
+    // ************************************ Demo Redux App thông qua React functional 
+    <div>
+      <DemoReduxApp />
+    </div>
     // *************************** Demo ReactHook useState, useEffect
     // Lấy context Provider bọc toàn bộ ứng dụng thẻ của chúng ta.
-    <ContextProvider>
-      {/* <DemoHookUseState /> */}
-      {/* <DemoUseEffect /> */}
-      {/* <DemoUseCallBack /> */}
-      {/* <DemoUseMemo /> */}
-      {/* <DemoUseRef /> */}
-      <DemoUseContext />
-    </ContextProvider>
+    // <ContextProvider>
+    //   {/* <DemoHookUseState /> */}
+    //   {/* <DemoUseEffect /> */}
+    //   {/* <DemoUseCallBack /> */}
+    //   {/* <DemoUseMemo /> */}
+    //   {/* <DemoUseRef /> */}
+    //   <DemoUseContext />
+    // </ContextProvider>
 
     // ************************** LifeCycle
     // <div>
