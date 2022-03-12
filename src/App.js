@@ -9,18 +9,21 @@ import DemoUseCallBack from './ReactHooks/DemoUseCallBack';
 import DemoUseMemo from './ReactHooks/DemoUseMemo';
 import DemoUseRef from './ReactHooks/DemoUseRef';
 import DemoUseReducer from './ReactHooks/DemoUseReducer';
+import ContextProvider from './ReactHooks/Context/ContextProvider';
+import DemoUseContext from './ReactHooks/DemoUseContext';
 
 function App() {
   return (
     // *************************** Demo ReactHook useState, useEffect
-    <div>
+    // Lấy context Provider bọc toàn bộ ứng dụng thẻ của chúng ta.
+    <ContextProvider>
       {/* <DemoHookUseState /> */}
       {/* <DemoUseEffect /> */}
       {/* <DemoUseCallBack /> */}
       {/* <DemoUseMemo /> */}
       {/* <DemoUseRef /> */}
-      <DemoUseReducer />
-    </div>
+      <DemoUseContext />
+    </ContextProvider>
 
     // ************************** LifeCycle
     // <div>

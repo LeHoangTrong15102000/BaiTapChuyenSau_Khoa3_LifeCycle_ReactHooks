@@ -38,3 +38,12 @@
 // UseReducer cũng như cái bảng nâng cấp của useState, dùng để quản lí những state của giao diện. Thay vì dùng nhiều useState hoặc useState với value là nested object/array và viết nhiều function để thay đổi state thì bây giờ các bạn có thể tổ chức state và các action làm thay đổi state đó 1 cách logic nhờ useReducer.
 // dispatch có thẻ chạy nhiều object vào hàm cartReducer để thay đổi các state của hàm đó
 // useReducer nhận vào 2 tham số, ham số thứ 1 là Reducer của chúng ta,tham số thứ 2  là giá trị mặc định của state reducer đó
+
+// *************************************** Use Context
+// Với useContext thì chúng ta sẽ quản lí state trên toàn bộ ứng dụng của chúng ta luôn
+// Sau này chúng ta sẽ có một số bài nâng cao về Redux nữa. không chỉ có quản lí với những cái state không.
+// Việc sử dụng useContext tương đương với việc sử dụng contextApi trong react class component không có quá nhiều sự khác biệt
+// Không sử dụng thằng này thì sử dụng Redux cho nó dễ xài
+
+
+// ************************************** Ở video sau hướng dẫn sử dụng Redux với những cái hook của Redux
