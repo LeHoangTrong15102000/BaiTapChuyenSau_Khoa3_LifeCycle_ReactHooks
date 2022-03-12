@@ -6,8 +6,9 @@ import LifeCycleReact from './LifeCycle/LifeCycleReact';
 import DemoHookUseState from './ReactHooks/DemoHookUseState';
 import DemoUseEffect from './ReactHooks/DemoUseEffect';
 import DemoUseCallBack from './ReactHooks/DemoUseCallBack';
-
-
+import DemoUseMemo from './ReactHooks/DemoUseMemo';
+import DemoUseRef from './ReactHooks/DemoUseRef';
+import DemoUseReducer from './ReactHooks/DemoUseReducer';
 
 function App() {
   return (
@@ -15,7 +16,10 @@ function App() {
     <div>
       {/* <DemoHookUseState /> */}
       {/* <DemoUseEffect /> */}
-      <DemoUseCallBack />
+      {/* <DemoUseCallBack /> */}
+      {/* <DemoUseMemo /> */}
+      {/* <DemoUseRef /> */}
+      <DemoUseReducer />
     </div>
 
     // ************************** LifeCycle
