@@ -53,7 +53,12 @@
 /**
  * Note:
  *  - Bước vào cái ứng dụng đầu tiên là phải làm giao diện trước, vừa code vừa làm giao diện rất là rối -> khiến cái flow đứt hoãn liên tục
- *
- *
  * Làm giao diện sử dụng React hook functional
+ *
+ * B1: xây dựng giao diện
+ * B2: xác định nguồn dữ liệu thay đổi tổ chức lưu trữ state
+ *    - Lưu trữ dưới dạng mảng, mảng có name, content, avatar có thể có thêm cả id nữa
+ * B3: Xử lý chức năng cho bài toán
+ * B4: là test lại tất cả các chức năng của bài toán
+ * B5: sau đó là những gì mà chúng ta làm
  */

@@ -7,8 +7,10 @@ import React, {
 } from 'react';
 
 const DemoReduxApp = () => {
+  // Dùng React hook để DOM tới thẻ
   let inputName = useRef(null);
   let inputContent = useRef(null);
+
   return (
     <div className="container">
       <h3 className="display-4 text-center">FakeBook App!</h3>
@@ -35,6 +37,7 @@ const DemoReduxApp = () => {
             </div>
           </div>
         </div>
+        {/* Form group chứa các nội dung của người nhập vào */}
         <form className="card-body">
           {/* <h4 className="card-title">Title</h4>
           <p className="card-text">Body</p> */}
@@ -45,12 +48,22 @@ const DemoReduxApp = () => {
               className="form-control"
               type="text"
               name="name"
-              value=""
               ref={inputName}
             />
           </div>
+
           <div className="form-group">
             <h4 className="card-title">Content</h4>
+            <input
+              className="form-control"
+              type="text"
+              name="content"
+              ref={inputContent}
+            />
+          </div>
+
+          <div className="form-group">
+            <button className="btn btn-success">Send</button>
           </div>
         </form>
       </div>
