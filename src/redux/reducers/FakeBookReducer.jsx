@@ -1,3 +1,5 @@
+import { ADD_COMMENT } from "../types/FakeBookTypes";
+
 const stateDefault = {
   // mảng comment chứa các thuộc tính như name, comment, avatar có thể có cả id
   // Thay vì dùng mapStateToProps thì trong bài giảng này chúng ta sẽ sử dụng useSelector
@@ -22,15 +24,18 @@ const stateDefault = {
 const FakeBookReducer = (state = stateDefault, action) => {
   // eslint-disable-next-line default-case
   switch (action.type) {
-    case 'add_comment': {
+    case ADD_COMMENT: {
       // clone lại giá trị mảng ban đầu, ghi thêm vào giá trị người dùng nhập vào
       state.comments = [...state.comments, action.userComment];
 
       return { ...state };
     }
+
+    // Mặc định return về state
+    default: return { ...state };
   }
 
-  return { ...state };
+  
 };
 
 // Khi đã lưu trên kho rồi thì chỉ cần lên kho gọi về là được

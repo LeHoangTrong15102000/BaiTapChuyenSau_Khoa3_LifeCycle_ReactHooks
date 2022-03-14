@@ -26,3 +26,7 @@
 // - Ta có thể tùy biến tên biến, ví dụ bên dưới opacity(có thể đặt tên lại! không phải tên css đâu chẳng qua ta muốn gắn nó vào style cho tiện nên mới đặt tên trùng)
 //
 // Trong biến có thể truyền linh động, ví dụ như là mảng, object không nhất thiêt là phải truyền vào chuỗi không.
+
+
+//  Sẽ nói về phần sử dụng biến chạy từ from đến to mà không sử dụng css
+// Các giá trị trong to: {} không chỉ là những con số ngoài ra còn có thể là một object, một mảng => Khi mà là object hoặc là mảng thì cái cách mà chúng ta sẽ lấy ra là như thế nào
