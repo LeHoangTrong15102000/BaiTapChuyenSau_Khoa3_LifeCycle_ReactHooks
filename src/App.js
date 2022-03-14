@@ -12,15 +12,21 @@ import DemoUseReducer from './ReactHooks/DemoUseReducer';
 import ContextProvider from './ReactHooks/Context/ContextProvider';
 import DemoUseContext from './ReactHooks/DemoUseContext';
 import DemoReduxApp from './ReactHooks/DemoReduxApp';
+import DemoUseSpring from './ReactHooks/ReactSpring/DemoUseSpring';
 
 function App() {
   return (
+    // ************************************ Demo useSpring
+    <div>
+      <DemoUseSpring />
+    </div>
 
 
     // ************************************ Demo Redux App thông qua React functional 
-    <div>
-      <DemoReduxApp />
-    </div>
+    // <div>
+    //   <DemoReduxApp />
+    // </div>
+
     // *************************** Demo ReactHook useState, useEffect
     // Lấy context Provider bọc toàn bộ ứng dụng thẻ của chúng ta.
     // <ContextProvider>
