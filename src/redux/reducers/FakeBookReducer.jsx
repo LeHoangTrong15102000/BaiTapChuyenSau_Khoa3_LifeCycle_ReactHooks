@@ -11,7 +11,8 @@ const stateDefault = {
     {
       id: 2,
       name: 'Yasuo',
-      content: 'Hello! mình là Trọng hiện tại mình đang học Front End tại CyberSoft',
+      content:
+        'Hello! mình là Trọng hiện tại mình đang học Front End tại CyberSoft',
       avatar: `https://i.pravatar.cc/150?u=yasuo`,
     },
   ],
@@ -20,16 +21,17 @@ const stateDefault = {
 // Khai báo cái Reducer cho bài
 const FakeBookReducer = (state = stateDefault, action) => {
   // eslint-disable-next-line default-case
-  switch(action.type) {
-    case 'add_comment' : {
+  switch (action.type) {
+    case 'add_comment': {
       // clone lại giá trị mảng ban đầu, ghi thêm vào giá trị người dùng nhập vào
-      state.comments = [...state.comments, action.userComment]
+      state.comments = [...state.comments, action.userComment];
+
+      return { ...state };
     }
   }
 
-  return {...state}
-
-}
+  return { ...state };
+};
 
 // Khi đã lưu trên kho rồi thì chỉ cần lên kho gọi về là được
 
