@@ -33,3 +33,10 @@
 // ***********************************
 // Bài giảng hôm nay sẽ học về useSprings
 // useSprings thực hiện trên nhiều component với nhiều giá trị khác nhau
+
+// ***************************************  Bài học về useTrai
+// Định nghĩa nhanh một cấu hình cho nhiều giá trị, thằng useSpring mỗi cái nó sẽ mỗi định nghĩa, còn thằng này sẽ định nghĩa đồng loạt cho chúng ta và tụi nó thực thi nối tiếp nhau
+// Trong useTrail hỗ trợ cho chúng ta 2 cái hàm là set() và stop()
+/**
+ * Hàm set là set toàn bộ giá trị theo giá trị mặc định nào đó
+ */

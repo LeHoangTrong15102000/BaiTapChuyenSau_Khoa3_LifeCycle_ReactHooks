@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect } from 'react';
 import { useSprings, useSpring, animated } from 'react-spring';
 
 const Ex3UseSprings = () => {
@@ -48,13 +48,17 @@ const Ex3UseSprings = () => {
     for (let key in propsAnim) {
       if (key === 'content' || key === 'number') {
         resultAnimComponent.push(
-          <animated.span>{propsAnim[key]}</animated.span>
+          <animated.h1 style={propsAnim}>{propsAnim[key]}</animated.h1>
         );
       }
     }
 
     return resultAnimComponent;
   };
+
+
+  // Nói chung đó là những dự án lớn mà người ta sẽ làm mà thôi, còn hiện tại học để đi xin việc, vào dự án lớn sẽ có cơ hội đụng tới những cái animation cỡ này
+  
   return (
     <div>
       {/* chạy vòng lặp ở trong đây */}

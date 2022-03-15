@@ -15,6 +15,7 @@ import DemoReduxApp from './ReactHooks/DemoReduxApp';
 import DemoUseSpring from './ReactHooks/ReactSpring/DemoUseSpring';
 import Ex2UseSpring from './ReactHooks/ReactSpring/Ex2UseSpring';
 import Ex3UseSprings from './ReactHooks/ReactSpring/Ex3UseSprings';
+import Ex4UseTrail from './ReactHooks/ReactSpring/Ex4UseTrail';
 
 function App() {
   return (
@@ -22,7 +23,9 @@ function App() {
     <div>
       {/* <DemoUseSpring /> */}
       {/* <Ex2UseSpring /> */}
-      <Ex3UseSprings />
+      {/* <Ex3UseSprings /> */}
+
+      <Ex4UseTrail />
     </div>
 
     // ************************************ Demo Redux App thông qua React functional
