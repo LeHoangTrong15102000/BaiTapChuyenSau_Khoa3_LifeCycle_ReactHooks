@@ -1,4 +1,5 @@
-import React, { useSpring } from 'react';
+import React from 'react';
+import { useSpring } from 'react-spring';
 
 const Ex2UseSpring = (props) => {
   let propsUseSpring = useSpring({

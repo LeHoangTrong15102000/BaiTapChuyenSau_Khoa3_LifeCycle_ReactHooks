@@ -14,13 +14,15 @@ import DemoUseContext from './ReactHooks/DemoUseContext';
 import DemoReduxApp from './ReactHooks/DemoReduxApp';
 import DemoUseSpring from './ReactHooks/ReactSpring/DemoUseSpring';
 import Ex2UseSpring from './ReactHooks/ReactSpring/Ex2UseSpring';
+import Ex3UseSprings from './ReactHooks/ReactSpring/Ex3UseSprings';
 
 function App() {
   return (
     // ************************************ Demo useSpring
     <div>
       {/* <DemoUseSpring /> */}
-      <Ex2UseSpring />
+      {/* <Ex2UseSpring /> */}
+      <Ex3UseSprings />
     </div>
 
     // ************************************ Demo Redux App thông qua React functional

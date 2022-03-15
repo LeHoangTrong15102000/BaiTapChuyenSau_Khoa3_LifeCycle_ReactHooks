@@ -27,6 +27,9 @@
 //
 // Trong biến có thể truyền linh động, ví dụ như là mảng, object không nhất thiêt là phải truyền vào chuỗi không.
 
-
 //  Sẽ nói về phần sử dụng biến chạy từ from đến to mà không sử dụng css
 // Các giá trị trong to: {} không chỉ là những con số ngoài ra còn có thể là một object, một mảng => Khi mà là object hoặc là mảng thì cái cách mà chúng ta sẽ lấy ra là như thế nào
+
+// ***********************************
+// Bài giảng hôm nay sẽ học về useSprings
+// useSprings thực hiện trên nhiều component với nhiều giá trị khác nhau
