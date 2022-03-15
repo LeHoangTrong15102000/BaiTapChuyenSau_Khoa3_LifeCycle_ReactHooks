@@ -13,16 +13,17 @@ import ContextProvider from './ReactHooks/Context/ContextProvider';
 import DemoUseContext from './ReactHooks/DemoUseContext';
 import DemoReduxApp from './ReactHooks/DemoReduxApp';
 import DemoUseSpring from './ReactHooks/ReactSpring/DemoUseSpring';
+import Ex2UseSpring from './ReactHooks/ReactSpring/Ex2UseSpring';
 
 function App() {
   return (
     // ************************************ Demo useSpring
     <div>
-      <DemoUseSpring />
+      {/* <DemoUseSpring /> */}
+      <Ex2UseSpring />
     </div>
 
-
-    // ************************************ Demo Redux App thông qua React functional 
+    // ************************************ Demo Redux App thông qua React functional
     // <div>
     //   <DemoReduxApp />
     // </div>
