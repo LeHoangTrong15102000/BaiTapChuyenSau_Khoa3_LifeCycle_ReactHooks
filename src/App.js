@@ -17,6 +17,7 @@ import Ex2UseSpring from './ReactHooks/ReactSpring/Ex2UseSpring';
 import Ex3UseSprings from './ReactHooks/ReactSpring/Ex3UseSprings';
 import Ex4UseTrail from './ReactHooks/ReactSpring/Ex4UseTrail';
 import Ex5UseTransition from './ReactHooks/ReactSpring/Ex5UseTransition';
+import Ex6UseChain from './ReactHooks/ReactSpring/Ex6UseChain';
 
 function App() {
   return (
@@ -27,7 +28,8 @@ function App() {
       {/* <Ex3UseSprings /> */}
 
       {/* <Ex4UseTrail /> */}
-      <Ex5UseTransition /> 
+      {/* <Ex5UseTransition />  */}
+      <Ex6UseChain />
     </div>
 
     // ************************************ Demo Redux App thông qua React functional
