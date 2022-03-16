@@ -39,4 +39,6 @@
 // Trong useTrail hỗ trợ cho chúng ta 2 cái hàm là set() và stop()
 /**
  * Hàm set là set toàn bộ giá trị theo giá trị mặc định nào đó
+ *
+ *  Tóm lại thì thằng useSpring dịnh nghĩa cho mỗi phần tử có cái spring khác nhau còn thằng useTrail định nghĩa cho các phần tử có cái spring giống nhau, tuy nhiên thằng Trail sẽ thực hiện tuần tự trong lúc chạy
  */

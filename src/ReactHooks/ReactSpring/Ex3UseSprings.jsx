@@ -1,4 +1,4 @@
-import React, {useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSprings, useSpring, animated } from 'react-spring';
 
 const Ex3UseSprings = () => {
@@ -56,9 +56,8 @@ const Ex3UseSprings = () => {
     return resultAnimComponent;
   };
 
-
   // Nói chung đó là những dự án lớn mà người ta sẽ làm mà thôi, còn hiện tại học để đi xin việc, vào dự án lớn sẽ có cơ hội đụng tới những cái animation cỡ này
-  
+
   return (
     <div>
       {/* chạy vòng lặp ở trong đây */}
