@@ -9,7 +9,7 @@ import { createStore } from "redux";
 import { rootReducer } from "./redux/reducers/rootReducer";
 
 // Tạo ra store của Redux
-const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(rootReducer);
 
 ReactDOM.render(
   <React.StrictMode>

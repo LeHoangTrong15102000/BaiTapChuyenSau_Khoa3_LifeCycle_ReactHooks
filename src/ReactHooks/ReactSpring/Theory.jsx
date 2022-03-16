@@ -34,11 +34,19 @@
 // Bài giảng hôm nay sẽ học về useSprings
 // useSprings thực hiện trên nhiều component với nhiều giá trị khác nhau
 
-// ***************************************  Bài học về useTrai
+// ***************************************  Bài học về useTrail
 // Định nghĩa nhanh một cấu hình cho nhiều giá trị, thằng useSpring mỗi cái nó sẽ mỗi định nghĩa, còn thằng này sẽ định nghĩa đồng loạt cho chúng ta và tụi nó thực thi nối tiếp nhau
 // Trong useTrail hỗ trợ cho chúng ta 2 cái hàm là set() và stop()
 /**
  * Hàm set là set toàn bộ giá trị theo giá trị mặc định nào đó
  *
  *  Tóm lại thì thằng useSpring dịnh nghĩa cho mỗi phần tử có cái spring khác nhau còn thằng useTrail định nghĩa cho các phần tử có cái spring giống nhau, tuy nhiên thằng Trail sẽ thực hiện tuần tự trong lúc chạy
+ */
+
+// ******************************************** useTransition
+// useTransition định nghĩa cho một mảng các phần tử
+/**
+ * tham số đầu tiên là nhận vào giá trị mảng của chúng ta
+ * tham số thứ 2 là cái key mà nó sẽ sinh ra( là một callBack trả về giá trị index của từng component trong mảng)
+ * tham số thứ 3 giống như useSpring và useTrail sẽ là định nghĩa chuyển động của animation đó(animation mà chúng ta sẽ định nghĩa)
  */
