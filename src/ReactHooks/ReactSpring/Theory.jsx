@@ -51,10 +51,9 @@
  * tham số thứ 3 giống như useSpring và useTrail sẽ là định nghĩa chuyển động của animation đó(animation mà chúng ta sẽ định nghĩa)
  */
 
-
 // ******************************************* useChain
 // useChain là sự kết hợp nhiều animation hook đã được định nghĩa theo 1 trình thực hiện nó theo trình tự
 // Cú pháp của useChain => useChain([phần tử 1, phần tử 2])
 /**
- * 
+ *
  */

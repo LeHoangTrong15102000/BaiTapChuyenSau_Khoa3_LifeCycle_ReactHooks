@@ -11,3 +11,4 @@
  * Note: Để làm một bài hay một dự án thì cần phải hiểu nghiệp vụ của nó như thế nào rồi mới triển khai ý tưởng để làm
  *     - Khi mà có Redux thì chia bao nhiêu component thì cũng không quan trọng , nhưng mà phải chia component sao cho hợp lý
  */
+// Tuy nhiên chưa hướng dẫn phân cấp thư mục nên sẽ đặt chung vào thư mục làm project

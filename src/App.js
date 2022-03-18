@@ -18,19 +18,24 @@ import Ex3UseSprings from './ReactHooks/ReactSpring/Ex3UseSprings';
 import Ex4UseTrail from './ReactHooks/ReactSpring/Ex4UseTrail';
 import Ex5UseTransition from './ReactHooks/ReactSpring/Ex5UseTransition';
 import Ex6UseChain from './ReactHooks/ReactSpring/Ex6UseChain';
+import BaiTapBauCua from './BaiTapTongHop/BaiTapBauCua/BaiTapBauCua';
 
 function App() {
   return (
-    // ************************************ Demo useSpring
+    // ************************************ BaiTapBauCauCaCop
     <div>
-      {/* <DemoUseSpring /> */}
-      {/* <Ex2UseSpring /> */}
-      {/* <Ex3UseSprings /> */}
-
-      {/* <Ex4UseTrail /> */}
-      {/* <Ex5UseTransition />  */}
-      <Ex6UseChain />
+      <BaiTapBauCua />
     </div>
+
+    // ************************************ Demo useSpring
+    // <div>
+    //   {/* <DemoUseSpring /> */}
+    //   {/* <Ex2UseSpring /> */}
+    //   {/* <Ex3UseSprings /> */}
+    //   {/* <Ex4UseTrail /> */}
+    //   {/* <Ex5UseTransition />  */}
+    //   {/* <Ex6UseChain /> */}
+    // </div>
 
     // ************************************ Demo Redux App thông qua React functional
     // <div>
