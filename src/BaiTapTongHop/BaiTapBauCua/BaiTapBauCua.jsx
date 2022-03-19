@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useSpring, useTransition } from 'react-spring';
 import DanhSachQuanCuoc from './DanhSachQuanCuoc';
 import DanhSachXucXac from './DanhSachXucXac';
 import DiemThuongCuoc from './DiemThuongCuoc';
 import './BaiTapGameBauCua.css';
-import { rgb } from '@react-spring/shared';
 
 const BaiTapBauCua = () => {
   return (
@@ -11,7 +12,7 @@ const BaiTapBauCua = () => {
       <DiemThuongCuoc />
 
       <div className="row">
-        <div className="col-8">
+        <div className="col-8" style={{ marginTop: 'none' }}>
           <DanhSachQuanCuoc />
         </div>
 

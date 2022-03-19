@@ -10,7 +10,7 @@
   font-family: 'Pony';
   background-color: rgb(255, 155, 2);
   min-height: 1500px;
-  position: fixed;
+  /* position: fixed; */
 }
 
 #BaiTapGameBauCua h3,

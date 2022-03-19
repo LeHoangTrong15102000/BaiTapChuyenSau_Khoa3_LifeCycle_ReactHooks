@@ -1,4 +1,4 @@
-import { ADD_COMMENT } from "../types/FakeBookTypes";
+import { ADD_COMMENT } from '../types/FakeBookTypes';
 
 const stateDefault = {
   // mảng comment chứa các thuộc tính như name, comment, avatar có thể có cả id
@@ -32,10 +32,9 @@ const FakeBookReducer = (state = stateDefault, action) => {
     }
 
     // Mặc định return về state
-    default: return { ...state };
+    default:
+      return { ...state };
   }
-
-  
 };
 
 // Khi đã lưu trên kho rồi thì chỉ cần lên kho gọi về là được

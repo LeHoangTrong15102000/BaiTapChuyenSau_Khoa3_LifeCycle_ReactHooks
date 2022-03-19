@@ -7,8 +7,20 @@
  *      + Thiết kế Redux lưu trữ state
  *      + Xây dựng chức năng cho game
  *      + tạo hiệu ứng animation sử dụng react Spring
- * 
+ *
  * Note: Để làm một bài hay một dự án thì cần phải hiểu nghiệp vụ của nó như thế nào rồi mới triển khai ý tưởng để làm
  *     - Khi mà có Redux thì chia bao nhiêu component thì cũng không quan trọng , nhưng mà phải chia component sao cho hợp lý
  */
 // Tuy nhiên chưa hướng dẫn phân cấp thư mục nên sẽ đặt chung vào thư mục làm project
+
+// ********************************************* Thiết kế Redux để lưu trữ
+/**
+ * Dùng mảng quân cược để lưu trữ các quân cược,  mảng bao gồm {id , hình ảnh quân cược, số lượng quân cược cần cược}.
+ *
+ * Tổ chức Redux:
+ *    + Quân cược thay đổi
+ *    + Tiền thưởng thay đổi
+ *    + Xúc Xắc thay đổi
+ */
+
+// *********************************************** Sử dụng CSS để làm hiệu ứng 3D cho cục xúc xắc
