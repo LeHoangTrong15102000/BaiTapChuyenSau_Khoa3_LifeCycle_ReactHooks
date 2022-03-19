@@ -1,8 +1,12 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState, useEffect, useCallback } from "react";
+import {useSelector, useDispatch} from 'react-redux'
 
 const XucXac = (props) => {
   // Để cái thẻ Fragment(cái thẻ mà không thực sự có trên giao diện)
   let { xucXacItem } = props;
+
+  // Gửi action lên Reducer
+  
   return (
     <Fragment>
       <div className="scene">

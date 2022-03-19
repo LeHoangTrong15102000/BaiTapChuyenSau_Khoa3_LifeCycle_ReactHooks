@@ -36,20 +36,18 @@ const BaiTapGameBauCuaReducer = (state = stateDefault, action) => {
       if (index !== -1) {
         // Nếu mà click vào đúng quân cược được chọn thì
         if (action.tangGiam) {
-          if (state.tongDiemThuong >= 100) {
+          if (state.tongDiemThuong > 0) {
             // tangGiam bằng true
             danhSachCuocUpdate[index].diemCuoc += 100;
             state.tongDiemThuong -= 100; // do là kiểu dữ liệu nguyên thủy nên có thể gán trực tiếp được
-          } else {
-            alert('Bạn đã đặt hết tiền thưởng!!!');
-          }
+          } 
         } else {
           if (danhSachCuocUpdate[index].diemCuoc > 0) {
             // tangGiam bằng false
             danhSachCuocUpdate[index].diemCuoc -= 100;
             state.tongDiemThuong += 100;
           }
-          alert('Tiền cược của bạn ít nhất phải là 100$');
+          
         }
       }
 
@@ -58,6 +56,11 @@ const BaiTapGameBauCuaReducer = (state = stateDefault, action) => {
 
       // Sau khi xử lý xong cuối cùng là cập nhật là state của Redux
       return { ...state };
+    }
+
+    case  'XOC_BAU_CUA' : {
+      
+      return {...state}
     }
     default:
       return state;

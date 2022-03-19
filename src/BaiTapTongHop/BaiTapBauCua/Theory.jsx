@@ -32,3 +32,10 @@
  * - Khi mà click vào quân cược nào thì sẽ đưa dữ liệu của quân cược đó lên Redux => đồng thời cập nhật state điểm của quân cược và state điểm thưởng.
  * -
  */
+
+
+// *************************************************** xử lý button Xốc trả điểm trúng thưởng hoặc là hoàn tiền lại
+/**
+ * Khi mà người dùng nhấn vào nút xốc thì sẽ render các con xúc xắc bầu cua ngẫu nhiên
+ * Hình ảnh trong cái dĩa Xốc chúng ta sẽ truyền động mỗi lần nhân vào thì sẽ push vào cái mảng cứ
+ */

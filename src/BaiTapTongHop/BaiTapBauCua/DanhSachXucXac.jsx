@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect,} from "react";
 import XucXac from "./XucXac";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -9,7 +9,8 @@ const DanhSachXucXac = (props) => {
 
   // Lặp danh sách xúc xắc lấy ra các hình ảnh
 
-  // Viết hàm render danhSachXucXac
+  // gửi Action lên Reducer
+  let dispatchLacXucXac = useDispatch()
 
   return (
     <div style={{ marginLeft: 100, marginTop: 150 }}>
@@ -38,6 +39,11 @@ const DanhSachXucXac = (props) => {
       </div>
       <div className="" style={{ marginLeft: "20%" }}>
         <button
+        onClick={() => {
+          dispatchLacXucXac({
+            type: 'XOC_BAU_CUA',          
+          })
+        }}
           className="mt-5 btn btn-success"
           style={{ fontSize: 25, padding: "5px 15px" }}
         >
