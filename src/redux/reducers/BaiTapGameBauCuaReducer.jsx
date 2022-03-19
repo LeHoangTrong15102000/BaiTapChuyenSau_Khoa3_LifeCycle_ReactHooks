@@ -21,6 +21,7 @@ const stateDefault = {
     { id: 'tom', hinhAnh: './img/BaiTapGameBauCua/tom.png' },
   ],
 };
+// Sao đó có thể làm những việc gì nhỉ
 
 // eslint-disable-next-line import/no-anonymous-default-export
 const BaiTapGameBauCuaReducer = (state = stateDefault, action) => {
