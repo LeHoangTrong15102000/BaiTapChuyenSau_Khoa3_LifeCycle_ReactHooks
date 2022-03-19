@@ -24,3 +24,11 @@
  */
 
 // *********************************************** Sử dụng CSS để làm hiệu ứng 3D cho cục xúc xắc
+
+// *********************************************** Nhấn vào nút đặt cược thì tiền thưởng giảm đi hoặc tăng lên
+/**
+ * Mỗi lần click vào tăng hoặc giảm thì nút sẽ scale lên khi bỏ click thì nhỏ xuống
+ * - Mỗi lần click vào thì tăng điểm cược lên và trừ điểm thưởng xuống => thay đổi state và danh sách cược\
+ * - Khi mà click vào quân cược nào thì sẽ đưa dữ liệu của quân cược đó lên Redux => đồng thời cập nhật state điểm của quân cược và state điểm thưởng.
+ * -
+ */
