@@ -33,9 +33,39 @@
  * -
  */
 
-
 // *************************************************** xử lý button Xốc trả điểm trúng thưởng hoặc là hoàn tiền lại
 /**
  * Khi mà người dùng nhấn vào nút xốc thì sẽ render các con xúc xắc bầu cua ngẫu nhiên
  * Hình ảnh trong cái dĩa Xốc chúng ta sẽ truyền động mỗi lần nhân vào thì sẽ push vào cái mảng cứ
  */
+
+// *************************************************** Xử lý tiếp khi mà random con xúc xắc thì sẽ hoàn tiền và cập nhật tiền thưởng như thế nào
+/**
+ *  Khi mà chúng ta thằng thì chúng ta sẽ so sánh điểm của mỗi quân cược và đĩa xốc có quân cược trùng với quân cược đã đặt
+ * Duyệt từng phần tử trong danhSachXucXac
+ *    + Xử lý điểm thắng trước sau đó là xử lý hoàn lại điểm cược
+ *    + Có nghĩa là phải duyệt mảng xử lý điểm thưởng cho người chơi trước sau đó mới hoàn tiền hoặc không hoàn tiền nếu quân cược đó có hoặc không có trong danhSachXucXac
+ *    + Có nghĩa là sẽ 2 vòng lặp lòng vào nhau, tính điểm thưởng sau rồi hoàn tiền
+ *
+ *    + Có thể duyệt mảng ngược lại theo như cầu mỗi người
+ */
+
+/**
+ * Xử lý tăng điểm thưởng
+ *   + Lấy mảng xúc xắc quét vào từng quân cược ở trên danh sach cược nếu có xx có trùng với quân cược được đặt thì tăng điểm thời
+ *   +  Sau khi tăng điểm thưởng thì tiến hành hoàn lại số điểm cược đã cược
+ *
+ *  Handle:
+ *    + duyệt mảng xúc xắc ngẫu nhiên vừa mới tạo ra
+ *    + // Nếu có tồn tại thì, trả tiền thưởng bao nhiêu tiền cược thì trả bấy nhiêu điểm thưởng, còn trường hợp trong mảng XX có 2 hoặc 3 con trùng nhau thì cũng xử lý nốt qua các lần lặp tiếp theo
+ */
+
+// ******************************************* Thực hiện chức năng hoàn tiền làm mới
+
+/** Thực hiện chức năng hoàn trả điểm cược/ không hoàn trả nếu QC không có trong DSXucXac */
+/**
+ * Xử lý hoàn tiền thì nên lấy DSQuanCuoc so sánh với DSXucXac nếu mà có QC trong DSXucXac thì hoàn tiền, nếu QC xuất hiện 2 3 lần thì cũng chỉ hoàn tiền 1 lần là được.
+ * - Dùng findIndex như là một vòng lặp vì chỉ cần tìm thấy 1 lần là nó sẽ break ra ngay lập tức
+ */
+
+// ****************************************** Thực hiện hiệu ứng animation cho các con xúc xắc trong danhSachXucXacNgauNhien

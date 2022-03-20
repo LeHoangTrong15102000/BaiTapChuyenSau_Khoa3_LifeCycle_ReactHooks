@@ -15,6 +15,7 @@ const stateDefault = {
 
   // mặt bầu cua mỗi lần xốc, chứa các mặt của xúc xắc bầu cua
   // Sau khi demo xong thì mỗi lần xốc thì push nó vào cái mảng này
+  // Sau mỗi lần random thì sẽ lấy một con xúc xắc ở mảng để truyền vào
   danhSachXucXac: [
     { ma: 'ga', hinhAnh: './img/BaiTapGameBauCua/ga.png' },
     { ma: 'nai', hinhAnh: './img/BaiTapGameBauCua/nai.png' },
@@ -40,14 +41,13 @@ const BaiTapGameBauCuaReducer = (state = stateDefault, action) => {
             // tangGiam bằng true
             danhSachCuocUpdate[index].diemCuoc += 100;
             state.tongDiemThuong -= 100; // do là kiểu dữ liệu nguyên thủy nên có thể gán trực tiếp được
-          } 
+          }
         } else {
           if (danhSachCuocUpdate[index].diemCuoc > 0) {
             // tangGiam bằng false
             danhSachCuocUpdate[index].diemCuoc -= 100;
             state.tongDiemThuong += 100;
           }
-          
         }
       }
 
@@ -58,9 +58,51 @@ const BaiTapGameBauCuaReducer = (state = stateDefault, action) => {
       return { ...state };
     }
 
-    case  'XOC_BAU_CUA' : {
-      
-      return {...state}
+    case 'XOC_BAU_CUA': {
+      // **************************** Random ra 3 con xúc xắc ngầu nhiên từ mảng 6 con xúc xắc
+      // lấy ra item mảng các con xúc xắc
+      const mangXucXacNgauNhien = [];
+
+      for (let i = 0; i < 3; i++) {
+        // lấy ra 3 con xúc xắc nên lặp qua 3 lần
+        let soNgauNhien = Math.floor(Math.random() * 6);
+        const xucXacNgauNhien = state.danhSachCuoc[soNgauNhien];
+        mangXucXacNgauNhien.push(xucXacNgauNhien);
+      }
+      // cập nhật lại danh sách xúc xắc sau khi đã random ngẫu nhiên xúc xắc
+      state.danhSachXucXac = mangXucXacNgauNhien;
+
+      // **************************** Tiến hành so sánh để trả thưởng tiền cược và hoàn tiền cược lại
+      // Duyệt mảng xúc xắc ngẫu nhiên vừa mới tạo ra, có thể duyệt bằng for hoặc dùng map để duyệt điều được(vì map sẽ giúp chúng ta trả về một cái mảng), dùng forEach cũng được(forEach chỉ giúp mình duyệt cái mảng)
+      // for (let i = 0; i < mangXucXacNgauNhien.length; i++) {}
+      mangXucXacNgauNhien.forEach((xucXacNN, index) => {
+        // mỗi lần duyệt xem trong danhSachCuoc có chứa qc === qcXXNN không
+        let indexDSCuoc = state.danhSachCuoc.findIndex(
+          (xucXac) => xucXac.ma === xucXacNN.ma
+        );
+        if (indexDSCuoc !== -1) {
+          // Lấy tổng diểm tổng cho cái điểm cược
+          state.tongDiemThuong += state.danhSachCuoc[indexDSCuoc].diemCuoc;
+        }
+        // => Vậy là xong bước cộng điểm mỗi khi có quanCuoc trung với qc trong danhSachCuoc
+      });
+      // ****************************** Xử lý nghiệp vụ hoàn tiền lại hoặc là trừ tiền đi luôn(Nếu QC nào trùng với QC trong DSXX)
+      // Duyệt mảng DSQuanCuoc
+      state.danhSachCuoc.forEach((quanCuoc, index) => {
+        // Tìm ra index của viên XX, coi có trùng với id của QC trong mảng XX hay không
+        let indexXucXac = mangXucXacNgauNhien.findIndex(
+          (xucXac) => xucXac.ma === quanCuoc.ma
+        );
+        if (indexXucXac !== -1) {
+          // Nếu có hoàn tiền lại
+          state.tongDiemThuong += quanCuoc.diemCuoc;
+        }
+        // Sau khi hoàn tiền thì phải reset lại điểm cược
+      });
+
+      // ****************************** Xử lý nghiệp vụ làm mới lại mangDanhSachQuanCuoc
+
+      return { ...state };
     }
     default:
       return state;
