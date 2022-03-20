@@ -71,3 +71,14 @@
 // ****************************************** Thực hiện hiệu ứng animation cho các con xúc xắc trong danhSachXucXacNgauNhien
 
 // ****************************************** Sử dụng Redux creator
+
+// ****************************************** Sử dụng React Spring để mỗi lần nhấn vào thì nó sẽ có hiệu ứng rung rung lên
+
+/**
+ * 
+ * Đối với transform thì thằng react-spring nó có dùng một thuộc tính đó chính là interpolate để nó biến đổi animation trong react
+ * Nếu truyền giá trị như props bình thường của component thì nó sẽ không xuất hiện hoặc là nó sẽ set cứng dữ liệu => nên sử dụng interpolate
+ * Tuy nhiên mỗi lần nhấn vào thay đổi props chứ không render lại animation
+ * thuộc tính set của useTrail chỉ set animation chứ ko có render lại component,. chỉ có setState của useState mới render lại thôi, còn thằng set chỉ có thay đổi thuộc tính của animation thôi
+ * [0 -> Trail, 1 -> set , 2 -> stop]
+ */
