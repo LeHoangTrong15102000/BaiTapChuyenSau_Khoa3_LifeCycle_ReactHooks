@@ -1,3 +1,9 @@
+import {
+  CHOI_LAI_BAU_CUA,
+  DAT_CUOC_BAU_CUA,
+  XOC_BAU_CUA,
+} from '../types/BaiTapGameBauCuaTypes';
+
 const stateDefault = {
   // DanhSachCuoc
   danhSachCuoc: [
@@ -27,7 +33,7 @@ const stateDefault = {
 // eslint-disable-next-line import/no-anonymous-default-export
 const BaiTapGameBauCuaReducer = (state = stateDefault, action) => {
   switch (action.type) {
-    case 'DAT_CUOC_BAU_CUA': {
+    case DAT_CUOC_BAU_CUA: {
       // Tìm đúng quân cược mà click vào thì tăng điểm quân cược đó lên
 
       const danhSachCuocUpdate = [...state.danhSachCuoc];
@@ -58,7 +64,7 @@ const BaiTapGameBauCuaReducer = (state = stateDefault, action) => {
       return { ...state };
     }
 
-    case 'XOC_BAU_CUA': {
+    case XOC_BAU_CUA: {
       // **************************** Random ra 3 con xúc xắc ngầu nhiên từ mảng 6 con xúc xắc
       // lấy ra item mảng các con xúc xắc
       const mangXucXacNgauNhien = [];
@@ -97,13 +103,29 @@ const BaiTapGameBauCuaReducer = (state = stateDefault, action) => {
           // Nếu có hoàn tiền lại
           state.tongDiemThuong += quanCuoc.diemCuoc;
         }
-        // Sau khi hoàn tiền thì phải reset lại điểm cược
       });
 
-      // ****************************** Xử lý nghiệp vụ làm mới lại mangDanhSachQuanCuoc
+      // ****************************** Xử lý nghiệp vụ làm mới lại mangDanhSachQuanCuoc => phải dùng hàm map thì nó mới biết là trả về mảng giá trị mới, còn forEach thì chỉ duyệt ko trả lại mảng mới
+      let danhSachCuocRenew = state.danhSachCuoc.map((quanCuoc, index) => {
+        // phải cho cái mảng chứa các đối tượng mới
+        // quanCuoc.diemCuoc = 0; // để như vậy thì nó chỉ biết là các phần tử bên trong con thay đổi thì nó sẽ không thay đổi
+        return { ...quanCuoc, diemCuoc: 0 }; // lặp trong moảng thì phải trả về mảng các phần tử trong mảng
+      });
+      // Sau khi gán về 0 thì cập nhật lại danh sách cược(diemCuoc: 0)
+      state.danhSachCuoc = danhSachCuocRenew;
 
+      // Cuối cùng là trả về cái state mới sau khi đã thực hiện các thao tác xử lý
       return { ...state };
     }
+
+    case CHOI_LAI_BAU_CUA: {
+      state.tongDiemThuong = 1000;
+      state.danhSachCuoc = state.danhSachCuoc.map((quanCuoc, index) => {
+        return { ...quanCuoc, diemCuoc: 0 };
+      });
+      return { ...state };
+    }
+
     default:
       return state;
   }

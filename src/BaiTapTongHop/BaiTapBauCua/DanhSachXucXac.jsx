@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import XucXac from './XucXac';
 import { useSelector, useDispatch } from 'react-redux';
+import { xocBauCuaAction } from '../../redux/actions/BaiTapGameBauCuaAction';
 
 const DanhSachXucXac = (props) => {
   let danhSachXucXac = useSelector(
@@ -45,9 +46,7 @@ const DanhSachXucXac = (props) => {
       <div className="" style={{ marginLeft: '20%' }}>
         <button
           onClick={() => {
-            dispatchLacXucXac({
-              type: 'XOC_BAU_CUA',
-            });
+            dispatchLacXucXac(xocBauCuaAction());
           }}
           className="mt-5 btn btn-success"
           style={{ fontSize: 25, padding: '5px 15px' }}

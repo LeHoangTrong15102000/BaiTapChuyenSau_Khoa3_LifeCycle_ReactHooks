@@ -69,3 +69,5 @@
  */
 
 // ****************************************** Thực hiện hiệu ứng animation cho các con xúc xắc trong danhSachXucXacNgauNhien
+
+// ****************************************** Sử dụng Redux creator

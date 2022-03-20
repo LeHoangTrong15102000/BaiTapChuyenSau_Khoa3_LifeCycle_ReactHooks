@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { datCuocAction } from '../../redux/actions/BaiTapGameBauCuaAction';
 
 const QuanCuoc = (props) => {
   // Code giao diện liên quan đến quân cược
@@ -19,11 +20,12 @@ const QuanCuoc = (props) => {
       >
         <button
           onClick={() => {
-            dispatchQuanCuoc({
-              type: 'DAT_CUOC_BAU_CUA',
-              quanCuoc, // gửi lên chính là quân cược được click
-              tangGiam: false,
-            });
+            dispatchQuanCuoc(datCuocAction(quanCuoc, false));
+            //   {
+            //   type: 'DAT_CUOC_BAU_CUA',
+            //   quanCuoc, // gửi lên chính là quân cược được click
+            //   tangGiam: false,
+            // }
           }}
           className="btn btn-danger mr-2"
         >
@@ -34,11 +36,7 @@ const QuanCuoc = (props) => {
         </span>
         <button
           onClick={() => {
-            dispatchQuanCuoc({
-              type: 'DAT_CUOC_BAU_CUA',
-              quanCuoc, // Quân cược khi được click
-              tangGiam: true,
-            });
+            dispatchQuanCuoc(datCuocAction(quanCuoc, true));
           }}
           className="btn btn-danger ml-2"
         >

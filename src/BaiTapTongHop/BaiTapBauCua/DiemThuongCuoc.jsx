@@ -1,10 +1,14 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { playAgainAction } from '../../redux/actions/BaiTapGameBauCuaAction';
 
 const DiemThuongCuoc = (props) => {
   let diemThuong = useSelector(
     (state) => state.BaiTapGameBauCuaReducer.tongDiemThuong
   );
+
+  // Dispatch nút xử lý chơi lại lên Reducer
+  let dispatchPlayAgain = useDispatch();
 
   return (
     <div className="">
@@ -25,6 +29,9 @@ const DiemThuongCuoc = (props) => {
       </div>
       <div className="text-center mt-5">
         <button
+          onClick={() => {
+            dispatchPlayAgain(playAgainAction());
+          }}
           style={{ fontSize: '20px', borderRadius: '10px', border: 'none' }}
           className="p-3 text-white bg-info"
         >
