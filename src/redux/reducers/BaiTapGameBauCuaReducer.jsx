@@ -29,8 +29,6 @@ const stateDefault = {
   ],
 };
 
-
-
 const BaiTapGameBauCuaReducer = (state = stateDefault, action) => {
   switch (action.type) {
     case DAT_CUOC_BAU_CUA: {

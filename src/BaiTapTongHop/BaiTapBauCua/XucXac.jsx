@@ -1,12 +1,23 @@
-import React, { Fragment, useState, useEffect, useCallback } from "react";
-import {useSelector, useDispatch} from 'react-redux'
+import React, { Fragment, useState, useEffect, useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useSpring } from 'react-spring';
 
 const XucXac = (props) => {
   // Để cái thẻ Fragment(cái thẻ mà không thực sự có trên giao diện)
   let { xucXacItem } = props;
 
   // Gửi action lên Reducer
-  
+  const [propsDice, setDice] = useSpring(() => ({
+    to: {
+      xyz: [360, 360, 360],
+    },
+    from: {
+      xyz: [0, 0, 0],
+    },
+    config: { duration: 500 },
+    reset: true, // để mỗi lần thực hiện animation thì nó sẽ tự động render lại animation cho mình để có thể nhấn lần kế tiếp
+  }));
+
   return (
     <Fragment>
       <div className="scene">
