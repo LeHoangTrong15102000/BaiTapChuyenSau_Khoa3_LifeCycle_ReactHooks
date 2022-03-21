@@ -80,7 +80,8 @@
  * Nếu truyền giá trị như props bình thường của component thì nó sẽ không xuất hiện hoặc là nó sẽ set cứng dữ liệu => nên sử dụng interpolate
  * Tuy nhiên mỗi lần nhấn vào thay đổi props chứ không render lại animation
  * thuộc tính set của useTrail chỉ set animation chứ ko có render lại component,. chỉ có setState của useState mới render lại thôi, còn thằng set chỉ có thay đổi thuộc tính của animation thôi
- * [0 -> Trail, 1 -> set , 2 -> stop]
+ * [0 -> Trail, 1 -> set , 2 -> stop]\
  */
+// Những giá trị nào sử dụng 2 lần trở lên thì nên đặt cho nó 1 giá trị
 
 // ***************************************** sử dụng useSpring để lắc xúc xắc xoay cho nó có hiệu ứng

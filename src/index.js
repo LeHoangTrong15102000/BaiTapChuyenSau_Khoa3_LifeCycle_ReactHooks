@@ -5,8 +5,10 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 // Import Redux
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { rootReducer } from './redux/reducers/rootReducer';
+// Import Thunk vào
+import thunk from 'redux-thunk'
 
 // Tạo ra store của Redux
 const store = createStore(rootReducer);
